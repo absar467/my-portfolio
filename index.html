@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    /* Reset default browser styles */
+    body, h1, h2, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    nav {
+      background-color: #444;
+      padding: 10px 0;
+      text-align: center;
+      animation: slideInDown 1s ease-in-out;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    main {
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      animation: slideInUp 1s ease-in-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      animation: slideInUp 1s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Name: Muhammad Absar Khalid</p>
+    <p>Roll Number: i19-2176</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h2>Home</h2>
+      <p>Hello! I'm Muhammad Absar Khalid, a web developer passionate about creating awesome projects.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <input type="text" id="filterInput" placeholder="Filter by technology...">
+      <ul id="projectsList">
+        <!-- Projects will be dynamically added here -->
+        <li>Project 1 (C#)</li>
+        <li>Project 2 (Java)</li>
+        <li>Project 3 (Node.js)</li>
+        <li>Project 4 (Python)</li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul id="educationList">
+        <!-- Education details will be dynamically added here -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 My Portfolio</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const projectsList = document.getElementById('projectsList');
+      const filterInput = document.getElementById('filterInput');
+      const educationList = document.getElementById('educationList');
+
+      // Sample projects data
+      const projects = [
+        { name: 'Project 1', technology: 'C#' },
+        { name: 'Project 2', technology: 'Java' },
+        { name: 'Project 3', technology: 'Node.js' },
+        { name: 'Project 4', technology: 'Python' },
+        // Add more projects as needed
+      ];
+
+      // Function to populate projects
+      function populateProjects(projects) {
+        projectsList.innerHTML = '';
+        projects.forEach(function (project) {
+          const li = document.createElement('li');
+          li.textContent = project.name + ' (' + project.technology + ')';
+          projectsList.appendChild(li);
+        });
+      }
+
+      // Initial projects list
+      populateProjects(projects);
+
+      // Filter projects
+      filterInput.addEventListener('input', function () {
+        const filterValue = filterInput.value.toLowerCase();
+        const filteredProjects = projects.filter(function (project) {
+          return project.technology.toLowerCase().includes(filterValue);
+        });
+        populateProjects(filteredProjects);
+      });
+
+      // Sample education data
+      const education = [
+        {
+          grade: '9th Grade',
+          courses: ['Mathematics', 'English', 'Science', 'History', 'Art']
+        },
+        {
+          grade: '10th Grade',
+          courses: ['Algebra', 'Literature', 'Biology', 'World History', 'Music']
+        },
+        {
+          grade: '11th Grade',
+          courses: ['Geometry', 'Composition', 'Chemistry', 'US History', 'Physical Education']
+        },
+        {
+          grade: '12th Grade',
+          courses: ['Calculus', 'Literary Analysis', 'Physics', 'Government', 'Computer Science']
+        },
+        {
+          grade: 'Bachelor of Science in Computer Science',
+          courses: ['Introduction to Computer Science', 'Data Structures and Algorithms', 'Software Engineering', 'Database Management Systems', 'Computer Networks', 'Operating Systems', 'Web Development', 'Artificial Intelligence', 'Machine Learning']
+        },
+        // Add more education data as needed
+      ];
+
+      // Function to populate education
+      function populateEducation(education) {
+        educationList.innerHTML = '';
+        education.forEach(function (item) {
+          const li = document.createElement('li');
+          const coursesList = item.courses.map(course => '<li>' + course + '</li>').join('');
+          li.innerHTML = '<strong>' + item.grade + ':</strong><ul>' + coursesList + '</ul>';
+          educationList.appendChild(li);
+        });
+      }
+
+      // Initial education list
+      populateEducation(education);
+    });
+  </script>
+</body>
+</html>
