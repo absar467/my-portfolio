@@ -163,7 +163,16 @@
         <li>Project 4 (Python)</li>
       </ul>
     </section>
-
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul id="certificationsList">
+        <!-- Certifications will be dynamically added here -->
+        <li>Certification 1</li>
+        <li>Certification 2</li>
+        <!-- Add more certifications as needed -->
+      </ul>
+    </section>
+    
     <section id="education">
       <h2>Education</h2>
       <ul id="educationList">
@@ -252,6 +261,33 @@
       // Initial education list
       populateEducation(education);
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+  const certificationsList = document.getElementById('certificationsList');
+
+  // Sample certifications data
+  const certifications = [
+    'Certification 1',
+    'Certification 2',
+    // Add more certifications as needed
+  ];
+
+  // Function to populate certifications
+  function populateCertifications(certifications) {
+    certificationsList.innerHTML = '';
+    certifications.forEach(function (certification) {
+      const li = document.createElement('li');
+      li.textContent = certification;
+      certificationsList.appendChild(li);
+    });
+  }
+
+  // Initial certifications list
+  populateCertifications(certifications);
+});
+
   </script>
+
+  
 </body>
 </html>
